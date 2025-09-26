@@ -6,7 +6,8 @@ import { BehaviorSubject, catchError, from, Observable, throwError } from 'rxjs'
   providedIn: 'root'
 })
 export class UserService {
-  readonly apiUrl = 'https://jsonplaceholder.typicode.com/users';
+  public readonly apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
   private usersSubject = new BehaviorSubject<User[]>([]);
   public users$ = this.usersSubject.asObservable();
 
