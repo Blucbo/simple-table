@@ -1,4 +1,24 @@
-<app-user-table
-  [users]="users"
-  (details)="showDetailsDialog($event)"
-></app-user-table>
+<input
+  type="search"
+  name="search"
+  placeholder="Search user"
+  aria-label="Search"
+  [formControl]="searchControl"
+/>
+
+<ng-container *ngIf="filteredUsers$ | async as usersLoaded">
+  <app-user-table
+    [users]="usersLoaded"
+   (details)="showDetailsDialog($event)"
+  ></app-user-table>
+
+  <ng-container *ngIf="usersLoaded.length === 0">
+    <p>No users found</p>
+  </ng-container>
+</ng-container>
+
+<app-user-datail
+  [user]="selectedUser"
+  [isOpen]="isDialogOpen"
+  (closeDialog)="closeDetailsDialog()"
+></app-user-datail>

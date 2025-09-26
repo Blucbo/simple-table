@@ -1,1 +1,43 @@
-<p>user-datail works!</p>
+<dialog [open]="isOpen && user" class="user-detail-modal">
+  <article *ngIf="user">
+    <header>
+      <h3>{{ user.name }}</h3>
+      <button
+        aria-label="Close"
+        rel="prev"
+        (click)="onClose()">
+      </button>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div>
+          <h4>Basic Information</h4>
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><strong>Website:</strong> {{ user.website }}</p>
+        </div>
+
+        <div>
+          <h4>Address</h4>
+          <p><strong>Street:</strong> {{ user.address.street }}</p>
+          <p><strong>Suite:</strong> {{ user.address.suite }}</p>
+          <p><strong>City:</strong> {{ user.address.city }}</p>
+          <p><strong>Zipcode:</strong> {{ user.address.zipcode }}</p>
+        </div>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <p><strong>Name:</strong> {{ user.company.name }}</p>
+        <p><strong>Catch Phrase:</strong> {{ user.company.catchPhrase }}</p>
+        <p><strong>Business:</strong> {{ user.company.bs }}</p>
+      </div>
+    </main>
+
+    <footer>
+      <button class="secondary" (click)="onClose()">Close</button>
+    </footer>
+  </article>
+</dialog>
